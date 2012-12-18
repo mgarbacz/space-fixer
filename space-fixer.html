@@ -6,80 +6,80 @@
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready( function() {
-			// We want the textarea to have focus on document load
-			$('#url-fix-input').focus();
-			// Here we fix the spaces to the url safe %20
+      // We want the textarea to have focus on document load
+      $('#url-fix-input').focus();
+      // Here we fix the spaces to the url safe %20
       $('#url-fix-button').click( function() {
         var input_string = $('#url-fix-input').val();
-				// Lets count the spaces we find, so we can report!
-				var space_count = 0;
-				// We are going to dynamically set this message based on result later
-				var message;
-				// Keep looping while spaces exist in the string
+        // Lets count the spaces we find, so we can report!
+        var space_count = 0;
+        // We are going to dynamically set this message based on result later
+        var message;
+        // Keep looping while spaces exist in the string
         while(input_string.indexOf(' ') != -1) {
           input_string = input_string.replace(' ', '%20');
-					space_count++;
+          space_count++;
         }
-				// We'll replace the text in the textarea
+        // We'll replace the text in the textarea
         $('#url-fix-input').val(input_string);
-				// Now lets report to the user
-				if (space_count == 0)
-					// Blue for info
-					message = '<p class="blue"><strong>Heads up!</strong> No spaces were'
-						+ ' found.';
-				else {
-					// So that we do good english, we adjust for plurality
-					var plurality = ' spaces were';
-					if (space_count == 1) plurality = ' space was';
-					// Green for success
-					var message = '<p class="green"><strong>Success!</strong> '
-						+ space_count + plurality + ' fixed.';
-				}
-				$('#fix-message').html(message + '<br />You can safely copy the URL in'
-					+ ' the textarea above and paste it into My Sites.</p>');
+        // Now lets report to the user
+        if (space_count == 0)
+          // Blue for info
+          message = '<p class="blue"><strong>Heads up!</strong> No spaces were'
+            + ' found.';
+        else {
+          // So that we do good english, we adjust for plurality
+          var plurality = ' spaces were';
+          if (space_count == 1) plurality = ' space was';
+          // Green for success
+          var message = '<p class="green"><strong>Success!</strong> '
+            + space_count + plurality + ' fixed.';
+        }
+        $('#fix-message').html(message + '<br />You can safely copy the URL in'
+          + ' the textarea above and paste it into My Sites.</p>');
       });
     });
   </script>
   <style>
-		html, body { height:100%; }
-		body {
-			background-color:#f5f5f5;
-			width:750px;
-			margin:0 auto;
-			font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
-			color:#5c5c5c;
-		}
-		#hacky-floater {
-			float:left;
-			height:40%;
-			margin-bottom:-100px;
-		}
-		#url-fix {
-			clear:both;
-		}
+    html, body { height:100%; }
+    body {
+      background-color:#f5f5f5;
+      width:750px;
+      margin:0 auto;
+      font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+      color:#5c5c5c;
+    }
+    #hacky-floater {
+      float:left;
+      height:40%;
+      margin-bottom:-100px;
+    }
+    #url-fix {
+      clear:both;
+    }
     #url-fix-input {
-			float:left;
+      float:left;
       height:100px;
       width:600px;
     }
-		#url-fix-button {
-			cursor:pointer;
-			margin-left:20px;
-			height:100px;
-			width:100px;
-		}
-		#fix-message p.green { color:#468847; }
-		#fix-message p.blue  { color:#3a87ad; }
+    #url-fix-button {
+      cursor:pointer;
+      margin-left:20px;
+      height:100px;
+      width:100px;
+    }
+    #fix-message p.green { color:#468847; }
+    #fix-message p.blue  { color:#3a87ad; }
   </style>
 </head>
 <body>
-	<div id="hacky-floater"></div>
+  <div id="hacky-floater"></div>
   <div id="url-fix">
     <h4>Paste a URL below to have any spaces replaced with the proper URL values</h4>
     <textarea id="url-fix-input" placeholder="Paste URL here" type="text"></textarea>
     <button id="url-fix-button">Fix it!</button>
   </div>
-	<div id="fix-message"></div>
+  <div id="fix-message"></div>
   <div id="bug-find">
     <p>Found a bug? Need support for other unsafe characters?<br />Contact Michal Garbacz (M67D): <a href="mailto:michal.garbacz.m67d@statefarm.com?subject=SpaceFixer Feedback">email</a> or target "@m67d" on My Sites. 
     </p>
